@@ -1,0 +1,10 @@
+{
+  "name": "rose-garden-kata",
+  "version": "1.0.0",
+  "description": "Rose Garden kata in JavaScript with Jest",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  }
+}

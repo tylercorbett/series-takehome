@@ -1,0 +1,8 @@
+{
+  "name": "rose-garden-kata",
+  "version": "1.0.0",
+  "description": "Rose Garden kata in Javascript with Mocha",
+  "scripts": {
+    "test": "mocha --require @babel/register"
+  }
+}
