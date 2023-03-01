@@ -35,6 +35,26 @@ export class RoseGarden {
       if (specialItems.includes(name)) {
         console.log('SPECIAL ITEM ', name);
 
+        if (name === 'Backstage passes') {
+          
+          if (sellIn <= 10 && sellIn > 5) {
+            quality += 2;
+          } 
+          else if (sellIn <= 5 && sellIn > 0) {
+            quality += 3;
+          }
+          else if (sellIn <= 0) {
+            quality = 0;
+          }
+
+          // Quality cannot surpass 50
+          if (quality > 50) {
+            quality = 50;
+          }
+
+          this.items[i].quality = quality;
+        }
+
         if (name === 'Sulfuras') {
           this.items[i].quality = 80;
           continue;
@@ -48,7 +68,8 @@ export class RoseGarden {
           }
           this.items[i].quality = quality;
         }
-      } else {
+      } 
+      else {
         // Not allowed to set an items quality to more than 50
         if (quality > 50) {
           quality = 50;
@@ -64,7 +85,8 @@ export class RoseGarden {
             quality -= 2;
             this.items[i].quality = quality;
           }
-        } else {
+        } 
+        else {
           // Standard item degradation before reaching sellIn date
           quality--;
           this.items[i].quality = quality;

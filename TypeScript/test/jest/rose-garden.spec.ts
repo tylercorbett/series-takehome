@@ -103,8 +103,33 @@ describe('Rose Garden', () => {
     });
   });
 
-  // "Backstage passes"
+  describe('Backstage passes', () => {
     // Quality increases by 2 when there are 10 days or less
-    // Quality increases by 3 when there are 5 days or less
-    // Quality drops to 0 after the concert
+    it('has a quality value that increases by 2 when there are 10 days or less', () => {
+      const roseGarden = new RoseGarden([new Item('Backstage passes', 10, 20)]);
+      let items = roseGarden.updateQuality();
+      expect(items[0].quality).toBe(22);
+      expect(items[0].sellIn).toBe(9);
+
+      items = roseGarden.updateQuality();
+      expect(items[0].quality).toBe(24);
+      expect(items[0].sellIn).toBe(8);
+    })
+
+    it('has a quality value that increases by 3 when there are 5 days or less', () => {
+      const roseGarden = new RoseGarden([new Item('Backstage passes', 5, 20)]);
+      let items = roseGarden.updateQuality();
+      expect(items[0].quality).toBe(23);
+      expect(items[0].sellIn).toBe(4);
+
+      items = roseGarden.updateQuality();
+      expect(items[0].quality).toBe(26);
+      expect(items[0].sellIn).toBe(3);
+    })
+
+  // Quality increases by 3 when there are 5 days or less
+
+
+  // Quality drops to 0 after the concert
+  });
 });
