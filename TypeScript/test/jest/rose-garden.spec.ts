@@ -85,8 +85,23 @@ describe('Rose Garden', () => {
     expect(itemsTwo[0].sellIn).toBe(2);
   });
 
-  // "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
-  // "Sulfuras" Quality is 80 and it never alters.
+  describe('Sulfuras', () => {
+    // "Sulfuras", being a legendary item, never has to be sold
+    it('has a sellIn value that never decreases', () => {
+      const roseGarden = new RoseGarden([new Item('Sulfuras', 10, 80)]);
+      let items = roseGarden.updateQuality();
+      expect(items[0].quality).toBe(80);
+      expect(items[0].sellIn).toBe(10);
+    });
+
+    // "Sulfuras" Quality is 80 and it never alters.
+    it('has a quality value of 80 and it never alters', () => {
+      const roseGarden = new RoseGarden([new Item('Sulfuras', 10, 60)]);
+      let items = roseGarden.updateQuality();
+      expect(items[0].quality).toBe(80);
+      expect(items[0].sellIn).toBe(10);
+    });
+  });
 
   // "Backstage passes"
     // Quality increases by 2 when there are 10 days or less

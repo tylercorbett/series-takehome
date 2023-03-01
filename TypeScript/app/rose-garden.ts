@@ -35,6 +35,11 @@ export class RoseGarden {
       if (specialItems.includes(name)) {
         console.log('SPECIAL ITEM ', name);
 
+        if (name === 'Sulfuras') {
+          this.items[i].quality = 80;
+          continue;
+        }
+
         if (name === 'Aged Brie') {
           quality += 1;
           
