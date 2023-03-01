@@ -32,12 +32,12 @@ export class RoseGarden {
         if (quality <= 2) {
           this.items[i].quality = 0;
         } else {
-          // Item degrading twice as fast after reaching sellIn date
+          // Standard item degrading twice as fast after reaching sellIn date
           quality -= 2;
           this.items[i].quality = quality;
         }
       } else {
-        // Standard item degradation
+        // Standard item degradation before reaching sellIn date
         sellIn--;
         quality--;
         this.items[i].sellIn = sellIn;
