@@ -39,7 +39,6 @@ export class RoseGarden {
           this.items[i].quality = 80;
           continue;
         }
-
         if (name === 'Aged Brie') {
           quality += 1;
           
@@ -55,7 +54,6 @@ export class RoseGarden {
           quality = 50;
           this.items[i].quality = quality;
         }
-
         // Standard items
         if (sellIn === 0) {
           // Quality cannot be negative
