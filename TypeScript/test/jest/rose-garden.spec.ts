@@ -114,8 +114,8 @@ describe('Rose Garden', () => {
       items = roseGarden.updateQuality();
       expect(items[0].quality).toBe(24);
       expect(items[0].sellIn).toBe(8);
-    })
-
+    });
+    // Quality increases by 3 when there are 5 days or less
     it('has a quality value that increases by 3 when there are 5 days or less', () => {
       const roseGarden = new RoseGarden([new Item('Backstage passes', 5, 20)]);
       let items = roseGarden.updateQuality();
@@ -125,11 +125,10 @@ describe('Rose Garden', () => {
       items = roseGarden.updateQuality();
       expect(items[0].quality).toBe(26);
       expect(items[0].sellIn).toBe(3);
-    })
+    });
+    // Quality drops to 0 after the concert
 
-  // Quality increases by 3 when there are 5 days or less
 
 
-  // Quality drops to 0 after the concert
   });
 });
