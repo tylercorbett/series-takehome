@@ -26,6 +26,7 @@ export class RoseGarden {
       let sellIn = this.items[i].sellIn;
       let quality = this.items[i].quality;
 
+
       console.log(name, 'name');
       console.log(sellIn, 'sellIn');
       console.log(quality, 'quality');
@@ -44,6 +45,12 @@ export class RoseGarden {
           this.items[i].quality = quality;
         }
       } else {
+        // Not allowed to set an items quality to more than 50
+        if (quality > 50) {
+          quality = 50;
+          this.items[i].quality = quality;
+        }
+
         // Standard items
         if (sellIn === 0) {
           // Quality cannot be negative

@@ -58,14 +58,32 @@ describe('Rose Garden', () => {
     items = roseGarden.updateQuality();
     expect(items[0].quality).toBe(50);
     expect(items[0].sellIn).toBe(0);
-    
+
     items = roseGarden.updateQuality();
     expect(items[0].quality).toBe(50);
     expect(items[0].sellIn).toBe(0);
   });
 
   // The Quality of an item is never more than 50
+  it('checks that the quality of an item is never more than 50', () => {
+    const roseGarden = new RoseGarden([new Item('Aged Brie', 1, 48)]);
+    let items = roseGarden.updateQuality();
+    expect(items[0].quality).toBe(49);
+    expect(items[0].sellIn).toBe(0);
 
+    items = roseGarden.updateQuality();
+    expect(items[0].quality).toBe(50);
+    expect(items[0].sellIn).toBe(0);
+    
+    items = roseGarden.updateQuality();
+    expect(items[0].quality).toBe(50);
+    expect(items[0].sellIn).toBe(0);
+
+    const roseGardenTwo = new RoseGarden([new Item('Rune Longsword', 3, 55)]);
+    let itemsTwo = roseGardenTwo.updateQuality();
+    expect(itemsTwo[0].quality).toBe(49);
+    expect(itemsTwo[0].sellIn).toBe(2);
+  });
 
   // "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
   // "Sulfuras" Quality is 80 and it never alters.
