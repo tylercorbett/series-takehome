@@ -63,7 +63,6 @@ export class RoseGarden {
       } 
       // Standard items
       else {
-
         // Not allowed to set an items quality to more than 50
         if (quality > 50) {
           quality = 50;
