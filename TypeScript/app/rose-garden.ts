@@ -28,8 +28,14 @@ export class RoseGarden {
       console.log(quality, 'quality');
 
       if (sellIn === 0) {
-        quality -= 2;
-        this.items[i].quality = quality;
+        // Quality cannot be negative
+        if (quality <= 2) {
+          this.items[i].quality = 0;
+        } else {
+          // Item degrading twice as fast after reaching sellIn date
+          quality -= 2;
+          this.items[i].quality = quality;
+        }
       } else {
         // Standard item degradation
         sellIn--;

@@ -29,7 +29,24 @@ describe('Rose Garden', () => {
   });
 
   // The Quality of an item is never negative
+  it('checks that the quality degrades twice as fast after sell date has past', () => {
+    const roseGarden = new RoseGarden([new Item('Rune Longsword', 1, 4)]);
+    let items = roseGarden.updateQuality();
+    expect(items[0].quality).toBe(3);
+    expect(items[0].sellIn).toBe(0);
 
+    items = roseGarden.updateQuality();
+    expect(items[0].quality).toBe(1);
+    expect(items[0].sellIn).toBe(0);
+
+    items = roseGarden.updateQuality();
+    expect(items[0].quality).toBe(0);
+    expect(items[0].sellIn).toBe(0);
+
+    items = roseGarden.updateQuality();
+    expect(items[0].quality).toBe(0);
+    expect(items[0].sellIn).toBe(0);
+  });
   
   // "Aged Brie" actually increases in Quality the older it gets
 
