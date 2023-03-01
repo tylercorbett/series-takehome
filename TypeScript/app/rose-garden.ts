@@ -20,52 +20,71 @@ export class RoseGarden {
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
       const name = this.items[i].name;
-      let quality = this.items[i].quality;
       let sellIn = this.items[i].sellIn;
+      let quality = this.items[i].quality;
 
-      if (name !== 'Aged Brie' && name !== 'Backstage passes to a TAFKAL80ETC concert') {
-        if (quality > 0) {
-          if (name !== 'Sulfuras, Hand of Ragnaros') {
-            quality = quality - 1
-          }
-        }
+      console.log(name, 'name');
+      console.log(sellIn, 'sellIn');
+      console.log(quality, 'quality');
+
+      if (sellIn === 0) {
+        quality -= 2;
+        this.items[i].quality = quality;
       } else {
-        if (quality < 50) {
-          quality = quality + 1
-          if (name === 'Backstage passes to a TAFKAL80ETC concert') {
-            if (sellIn < 11) {
-              if (quality < 50) {
-                quality = quality + 1
-              }
-            }
-            if (sellIn < 6) {
-              if (quality < 50) {
-                quality = quality + 1
-              }
-            }
-          }
-        }
+        // Standard item degradation
+        sellIn--;
+        quality--;
+        this.items[i].sellIn = sellIn;
+        this.items[i].quality = quality;
       }
-      if (name !== 'Sulfuras, Hand of Ragnaros') {
-        sellIn = sellIn - 1;
-      }
-      if (sellIn < 0) {
-        if (name !== 'Aged Brie') {
-          if (name !== 'Backstage passes to a TAFKAL80ETC concert') {
-            if (quality > 0) {
-              if (name !== 'Sulfuras, Hand of Ragnaros') {
-                quality = quality - 1
-              }
-            }
-          } else {
-            quality = quality - quality
-          }
-        } else {
-          if (quality < 50) {
-            quality = quality + 1
-          }
-        }
-      }
+      
+     
+      
+      console.log(sellIn, 'sellIn after subtraction');
+      console.log(quality, 'quality after subtraction');
+      // if (name !== 'Aged Brie' && name !== 'Backstage passes to a TAFKAL80ETC concert') {
+      //   if (quality > 0) {
+      //     if (name !== 'Sulfuras, Hand of Ragnaros') {
+      //       quality = quality - 1
+      //     }
+      //   }
+      // } else {
+      //   if (quality < 50) {
+      //     quality = quality + 1
+      //     if (name === 'Backstage passes to a TAFKAL80ETC concert') {
+      //       if (sellIn < 11) {
+      //         if (quality < 50) {
+      //           quality = quality + 1
+      //         }
+      //       }
+      //       if (sellIn < 6) {
+      //         if (quality < 50) {
+      //           quality = quality + 1
+      //         }
+      //       }
+      //     }
+      //   }
+      // }
+      // if (name !== 'Sulfuras, Hand of Ragnaros') {
+      //   sellIn = sellIn - 1;
+      // }
+      // if (sellIn < 0) {
+      //   if (name !== 'Aged Brie') {
+      //     if (name !== 'Backstage passes to a TAFKAL80ETC concert') {
+      //       if (quality > 0) {
+      //         if (name !== 'Sulfuras, Hand of Ragnaros') {
+      //           quality = quality - 1
+      //         }
+      //       }
+      //     } else {
+      //       quality = quality - quality
+      //     }
+      //   } else {
+      //     if (quality < 50) {
+      //       quality = quality + 1
+      //     }
+      //   }
+      // }
     }
 
     return this.items;

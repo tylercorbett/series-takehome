@@ -9,10 +9,23 @@ describe('Rose Garden', () => {
 
   // Once the sell by date has passed, Quality degrades twice as fast
   it('checks that the quality degrades twice as fast after sell date has past', () => {
-    const roseGarden = new RoseGarden([new Item('foo', 0, 0)]);
-    const items = roseGarden.updateQuality();
-
+    const roseGarden = new RoseGarden([new Item('Rune Longsword', 2, 20)]);
+    let items = roseGarden.updateQuality();
+    expect(items[0].name).toBe('Rune Longsword');
+    expect(items[0].quality).toBe(19);
+    expect(items[0].sellIn).toBe(1);
     
+    items = roseGarden.updateQuality();
+    expect(items[0].quality).toBe(18);
+    expect(items[0].sellIn).toBe(0);
+
+    items = roseGarden.updateQuality();
+    expect(items[0].quality).toBe(16);
+    expect(items[0].sellIn).toBe(0);
+
+    items = roseGarden.updateQuality();
+    expect(items[0].quality).toBe(14);
+    expect(items[0].sellIn).toBe(0);
   });
 
   // The Quality of an item is never negative
