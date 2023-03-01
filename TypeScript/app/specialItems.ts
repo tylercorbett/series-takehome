@@ -1,0 +1,1 @@
+export const specialItems = ['Aged Brie', 'Sulfuras', 'Backstage passes'];

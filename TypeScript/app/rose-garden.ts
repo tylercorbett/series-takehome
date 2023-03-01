@@ -1,3 +1,5 @@
+import { specialItems } from "./specialItems";
+
 export class Item {
   name: string;
   sellIn: number;
@@ -28,24 +30,41 @@ export class RoseGarden {
       console.log(sellIn, 'sellIn');
       console.log(quality, 'quality');
 
-      if (sellIn === 0) {
-        // Quality cannot be negative
-        if (quality <= 2) {
-          this.items[i].quality = 0;
-        } else {
-          // Standard item degrading twice as fast after reaching sellIn date
-          quality -= 2;
+      // Special items
+      if (specialItems.includes(name)) {
+        console.log('SPECIAL ITEM ', name);
+
+        if (name === 'Aged Brie') {
+          quality += 1;
+          
+          // Quality cannot surpass 50
+          if (quality > 50) {
+            quality = 50;
+          }
           this.items[i].quality = quality;
         }
       } else {
-        // Standard item degradation before reaching sellIn date
-        sellIn--;
-        quality--;
-        this.items[i].sellIn = sellIn;
-        this.items[i].quality = quality;
+        // Standard items
+        if (sellIn === 0) {
+          // Quality cannot be negative
+          if (quality <= 2) {
+            this.items[i].quality = 0;
+          } else {
+            // Standard item degrading twice as fast after reaching sellIn date
+            quality -= 2;
+            this.items[i].quality = quality;
+          }
+        } else {
+          // Standard item degradation before reaching sellIn date
+          quality--;
+          this.items[i].quality = quality;
+        }
       }
-      
-     
+
+      if (sellIn > 0) {
+        sellIn--;
+        this.items[i].sellIn = sellIn;
+      }
       
       console.log(sellIn, 'sellIn after subtraction');
       console.log(quality, 'quality after subtraction');

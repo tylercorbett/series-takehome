@@ -50,7 +50,18 @@ describe('Rose Garden', () => {
   
   // "Aged Brie" actually increases in Quality the older it gets
   it('checks that Aged Brie increases in quality as it gets older', () => {
+    const roseGarden = new RoseGarden([new Item('Aged Brie', 1, 48)]);
+    let items = roseGarden.updateQuality();
+    expect(items[0].quality).toBe(49);
+    expect(items[0].sellIn).toBe(0);
+
+    items = roseGarden.updateQuality();
+    expect(items[0].quality).toBe(50);
+    expect(items[0].sellIn).toBe(0);
     
+    items = roseGarden.updateQuality();
+    expect(items[0].quality).toBe(50);
+    expect(items[0].sellIn).toBe(0);
   });
 
   // The Quality of an item is never more than 50
