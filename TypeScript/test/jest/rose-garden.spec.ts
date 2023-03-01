@@ -127,8 +127,15 @@ describe('Rose Garden', () => {
       expect(items[0].sellIn).toBe(3);
     });
     // Quality drops to 0 after the concert
+    it('has a quality value that drops to 0 when sellIn is 0', () => {
+      const roseGarden = new RoseGarden([new Item('Backstage passes', 1, 20)]);
+      let items = roseGarden.updateQuality();
+      expect(items[0].quality).toBe(23);
+      expect(items[0].sellIn).toBe(0);
 
-
-
+      items = roseGarden.updateQuality();
+      expect(items[0].quality).toBe(0);
+      expect(items[0].sellIn).toBe(0);
+    });
   });
 });
