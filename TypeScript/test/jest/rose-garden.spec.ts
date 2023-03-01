@@ -79,10 +79,15 @@ describe('Rose Garden', () => {
     expect(items[0].quality).toBe(50);
     expect(items[0].sellIn).toBe(0);
 
-    const roseGardenTwo = new RoseGarden([new Item('Rune Longsword', 3, 55)]);
-    let itemsTwo = roseGardenTwo.updateQuality();
-    expect(itemsTwo[0].quality).toBe(49);
-    expect(itemsTwo[0].sellIn).toBe(2);
+    const roseGardenRuneLongsword = new RoseGarden([new Item('Rune Longsword', 3, 55)]);
+    let itemsRuneLongsword = roseGardenRuneLongsword.updateQuality();
+    expect(itemsRuneLongsword[0].quality).toBe(49);
+    expect(itemsRuneLongsword[0].sellIn).toBe(2);
+
+    const roseGardenBackstagePasses = new RoseGarden([new Item('Backstage passes', 5, 49)]);
+    let itemsBackstagePasses = roseGardenBackstagePasses.updateQuality();
+    expect(itemsBackstagePasses[0].quality).toBe(50);
+    expect(itemsBackstagePasses[0].sellIn).toBe(4);
   });
 
   describe('Sulfuras', () => {
