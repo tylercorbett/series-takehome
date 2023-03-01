@@ -29,7 +29,7 @@ describe('Rose Garden', () => {
   });
 
   // The Quality of an item is never negative
-  it('checks that the quality degrades twice as fast after sell date has past', () => {
+  it('checks that the quality quality of an item is never negative', () => {
     const roseGarden = new RoseGarden([new Item('Rune Longsword', 1, 4)]);
     let items = roseGarden.updateQuality();
     expect(items[0].quality).toBe(3);
@@ -49,7 +49,9 @@ describe('Rose Garden', () => {
   });
   
   // "Aged Brie" actually increases in Quality the older it gets
-
+  it('checks that Aged Brie increases in quality as it gets older', () => {
+    
+  });
 
   // The Quality of an item is never more than 50
 
